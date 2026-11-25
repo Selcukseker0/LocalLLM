@@ -75,7 +75,10 @@ export function pickModelName(models) {
   const usable = (models || [])
     .map((item) => String(item?.name || '').replace(/^models\//, ''))
     .filter(Boolean)
-    .filter((name) => !/embedding|aqa|imagen|veo|tts|image/i.test(name));
+    // AI Studio's model list can include internal/preview endpoints (for example
+    // antigravity-preview) that do not accept the public Gemini API request body.
+    // They often have a higher date/version number and would otherwise win below.
+    .filter((name) => !/embedding|aqa|imagen|veo|tts|image|antigravity|preview|experimental|^gemma/i.test(name));
   if (!usable.length) return null;
 
   const version = (name) => {
