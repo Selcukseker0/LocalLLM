@@ -156,6 +156,8 @@ test('model adı ya da API sürümü değişirse öneri ayrıştırılır', asyn
     pickModelName([
       { name: 'models/gemini-2.5-pro' },
       { name: 'models/gemini-3.8-flash' },
+      { name: 'models/antigravity-preview-09-2026' },
+      { name: 'models/gemini-99.0-flash-preview' },
       { name: 'models/text-embedding-004' },
       { name: 'models/imagen-3.0' }
     ]),
